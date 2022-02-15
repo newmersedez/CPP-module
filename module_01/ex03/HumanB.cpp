@@ -6,9 +6,7 @@ HumanB::HumanB(std::string name)
 }
 
 HumanB::~HumanB()
-{
-
-}
+{}
 
 void    HumanB::attack()
 {

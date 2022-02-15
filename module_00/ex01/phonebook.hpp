@@ -2,8 +2,8 @@
 
 #include "contact.hpp"
 #include <iomanip>
-#include <algorithm>
 
+#define MIN(a, b) ((a < b) ? a : b)
 #define PHONEBOOK_SIZE 8
 
 class PhoneBook

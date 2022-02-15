@@ -44,7 +44,7 @@ void	PhoneBook::search()
 	(void)id;
 
 	
-	for (int i = 0; i < std::min(PHONEBOOK_SIZE, _size); i++)
+	for (int i = 0; i < MIN(PHONEBOOK_SIZE, _size); i++)
 		displayContact(i);
 	std::cout << "\nENTER ID: ";
 	std::cin >> id;

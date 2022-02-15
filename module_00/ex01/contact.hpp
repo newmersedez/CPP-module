@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 class Contact
 {
@@ -15,11 +16,11 @@ public:
 	Contact();
 	~Contact();
 
-	void	setFirstName(const std::string& first_name);
-	void	setLastName(const std::string& last_name);
-	void	setNickname(const std::string& nickname);
-	void	setPhoneNumber(const std::string& phone_number);
-	void	setDarkestSecret(const std::string& darkest_secret);
+	void	setFirstName(std::string first_name);
+	void	setLastName(std::string last_name);
+	void	setNickname(std::string nickname);
+	void	setPhoneNumber(std::string phone_number);
+	void	setDarkestSecret(std::string darkest_secret);
 
 	const std::string&	getFirstName() const;
 	const std::string&	getLastName() const;
@@ -28,3 +29,6 @@ public:
 	const std::string&	getDarkestSecret() const;
 	
 };
+
+std::istream&	operator>>(std::istream &fin, Contact &contact);
+std::ostream&	operator<<(std::ostream &fout, const Contact &contact);

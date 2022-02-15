@@ -1,17 +1,22 @@
 #pragma once
 
 #include "contact.hpp"
+#include <iomanip>
+#include <algorithm>
+
+#define PHONEBOOK_SIZE 8
 
 class PhoneBook
 {
 private:
-	Contact	_people[8];
+	Contact	_phonebook[PHONEBOOK_SIZE];
+	int	_size;
 
 public:
 	PhoneBook();
 	~PhoneBook();
 
-	void	add(const Contact& contact);
-	void	search(const Contact& contact);
-	void	displayAllContacts();
+	void	add();
+	void	search();
+	void	displayContact(int id);
 };

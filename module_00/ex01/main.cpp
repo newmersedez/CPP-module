@@ -5,10 +5,10 @@
 
 static void	displayActions()
 {
-	std::cout << "1) ADD - add new contact" << std::endl;
+	std::cout << "\n1) ADD - add new contact" << std::endl;
 	std::cout << "2) SEARCH - find contact" << std::endl;
 	std::cout << "3) EXIT - finish program and exit" << std::endl;
-	std::cout << "Enter action: " << std::endl;
+	std::cout << "Enter action: ";
 }
 
 static void start()
@@ -21,17 +21,11 @@ static void start()
 		displayActions();
 		std::cin >> action;
 		if (action == "ADD")
-		{
-
-		}
+			phone_book.add();
 		else if (action == "SEARCH")
-		{
-
-		}
+			phone_book.search();
 		else if (action == "EXIT")
-		{
 			break;
-		}
 	}
 }
 

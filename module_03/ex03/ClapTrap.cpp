@@ -1,5 +1,14 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap()
+{
+	this->_name = "Lorphan";
+	this->_hit_points = 10;
+	this->_energy_points = 10;
+	this->_attack_damage = 0;
+	std::cout << "ClapTrap " << this->_name << " created!" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name)
 {
 	this->_name = name;
@@ -15,6 +24,7 @@ ClapTrap::ClapTrap(const ClapTrap& claptrap)
 	this->_hit_points = claptrap._hit_points;
 	this->_energy_points = claptrap._energy_points;
 	this->_attack_damage = claptrap._attack_damage;
+	std::cout << "ClapTrap " << this->_name << " created (copy operation)!" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& claptrap)

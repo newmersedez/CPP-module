@@ -1,4 +1,4 @@
-NAME			= fixed
+NAME			= scavtrap
 
 CC				= c++
 CFLAGS			= -Wall -Wextra -Werror -std=c++98

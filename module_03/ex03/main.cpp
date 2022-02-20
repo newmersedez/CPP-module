@@ -2,20 +2,18 @@
 
 int		main()
 {
-	DiamondTrap	diamond;
+	DiamondTrap	diamond1("44444444444444444");
 
-	diamond.attack("Evaluator");
-	diamond.beRepaired(10);
-	diamond.guardGate();
-	diamond.highFivesGuys();
-	diamond.whoAmI();
+	diamond1.takeDamage(50);
+	diamond1.beRepaired(20);
 
-	DiamondTrap diamond2 = diamond;
+	DiamondTrap diamond2 = diamond1;
+	DiamondTrap diamond3;
 
-	DiamondTrap	diamond3;
-	
-	diamond3 = diamond;
-
+	diamond2.beRepaired(20);
+	diamond1.attack("diamond 2");
+	diamond1.whoAmI();
 	diamond2.whoAmI();
 	diamond3.whoAmI();
+	return 0;
 }

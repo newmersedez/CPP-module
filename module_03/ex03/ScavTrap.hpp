@@ -8,7 +8,7 @@ public:
 	ScavTrap(std::string name = "lorphan");
 	ScavTrap(const ScavTrap& scavtrap);
 	ScavTrap& operator=(const ScavTrap& scavtrap);
-	~ScavTrap();
+	virtual ~ScavTrap();
 
 	void	guardGate();
 	void	attack(const std::string& target);

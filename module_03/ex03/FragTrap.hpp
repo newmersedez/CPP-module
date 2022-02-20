@@ -8,7 +8,7 @@ public:
 	FragTrap(std::string name = "lorphan");
 	FragTrap(const FragTrap& fragtrap);
 	FragTrap& operator=(const FragTrap& fragtrap);
-	~FragTrap();
+	virtual ~FragTrap();
 
 	void	highFivesGuys(void);
 };

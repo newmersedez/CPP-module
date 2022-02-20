@@ -1,14 +1,5 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
-{
-	this->_name = "Lorphan";
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
-	std::cout << "ClapTrap " << this->_name << " created!" << std::endl;
-}
-
 ClapTrap::ClapTrap(std::string name)
 {
 	this->_name = name;

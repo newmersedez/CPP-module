@@ -1,15 +1,5 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap()
-	: ClapTrap("Lorphan_clap_name"), FragTrap("Lorphan"), ScavTrap("Lorphan")
-{
-	this->_name = "Lorphan";
-	FragTrap::_hit_points = 100;
-	ScavTrap::_energy_points = 30;
-	FragTrap::_attack_damage = 30;
-	std::cout << "DiamondTrap " << this->_name << " created!" << std::endl;
-}
-
 DiamondTrap::DiamondTrap(std::string name)
 	: ClapTrap(name + "_clap_name"), FragTrap("Lorphan"), ScavTrap("Lorphan")
 {

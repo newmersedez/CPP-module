@@ -12,8 +12,7 @@ protected:
 	unsigned int	_attack_damage;
 
 public:
-	ClapTrap();
-	ClapTrap(std::string name);
+	ClapTrap(std::string name = "lorphan");
 	ClapTrap(const ClapTrap& claptrap);
 	ClapTrap& operator=(const ClapTrap& claptrap);
 	virtual ~ClapTrap();

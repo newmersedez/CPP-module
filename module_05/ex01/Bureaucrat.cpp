@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(std::string name)
 	: name(name), grade(Bureaucrat::min_grade)
@@ -7,9 +8,9 @@ Bureaucrat::Bureaucrat(std::string name)
 Bureaucrat::Bureaucrat(unsigned int grade, std::string name)
 	: name(name), grade(grade)
 {
-	if (this->grade > Bureaucrat::max_grade)
+	if (grade < Bureaucrat::max_grade)
 		throw Bureaucrat::GradeTooHighException();
-	if (this->grade < Bureaucrat::min_grade)
+	if (grade > Bureaucrat::min_grade)
 		throw Bureaucrat::GradeTooLowException();
 }
 
@@ -40,26 +41,42 @@ unsigned int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	this->grade++;
-	if (this->grade > Bureaucrat::max_grade)
+	this->grade--;
+	if (this->grade < Bureaucrat::max_grade)
 		throw Bureaucrat::GradeTooHighException();
 }
 
 void Bureaucrat::decrementGrade()
 {
-	this->grade--;
-	if (this->grade < Bureaucrat::min_grade)
+	this->grade++;
+	if (this->grade > Bureaucrat::min_grade)
 		throw Bureaucrat::GradeTooLowException();
+}
+
+void Bureaucrat::signForm(Form& form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cerr << this->name << " signs " 
+				<< form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << this->name << " cannot sign "
+				<< form.getName() << " because " 
+				<< e.what() << std::endl;
+	}
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade value is out of range (grade > max value)";
+	return "Grade is too high.";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade value is out of range (grade < min value)";
+	return "Grade is too low.";
 }
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat)

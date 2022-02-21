@@ -12,6 +12,8 @@ private:
 	static const unsigned int	max_grade = 1;
 	static const unsigned int	min_grade = 150;
 
+	Bureaucrat& operator=(const Bureaucrat& copy);
+
 public:
 	class GradeTooHighException : public std::exception
 	{
@@ -27,8 +29,6 @@ public:
 	Bureaucrat(unsigned int grade, std::string name = "None");
 	Bureaucrat(const Bureaucrat& copy);
 	~Bureaucrat();
-
-	Bureaucrat& operator=(const Bureaucrat& copy);
 	
 	const std::string& getName() const;
 	unsigned int getGrade() const;

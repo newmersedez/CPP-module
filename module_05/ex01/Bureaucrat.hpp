@@ -1,7 +1,9 @@
 #pragma once
 
-#include <string>
 #include <iostream>
+#include <string>
+
+class Form;
 
 class Bureaucrat
 {
@@ -9,9 +11,11 @@ private:
 	const std::string	name;
 	unsigned int		grade;
 
+	Bureaucrat& operator=(const Bureaucrat& copy);
+
 public:
-	static const unsigned int	min_grade = 1;
-	static const unsigned int	max_grade = 150;
+	static const unsigned int	max_grade = 1;
+	static const unsigned int	min_grade = 150;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -27,13 +31,12 @@ public:
 	Bureaucrat(unsigned int grade, std::string name = "None");
 	Bureaucrat(const Bureaucrat& copy);
 	~Bureaucrat();
-
-	Bureaucrat& operator=(const Bureaucrat& copy);
 	
 	const std::string& getName() const;
 	unsigned int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
+	void signForm(Form& form) const;
 };
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat);

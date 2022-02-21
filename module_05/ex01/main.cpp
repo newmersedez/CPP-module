@@ -1,12 +1,11 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
 	try
 	{
-		std::cout << "Test1: ";
-		Bureaucrat b1(666, "Lorphan");
-		std::cout << b1 << std::endl;
+		Form	form1("rwq", 0, 0);
 	}
 	catch(const std::exception& e)
 	{
@@ -15,9 +14,17 @@ int main()
 	
 	try
 	{
-		std::cout << "Test2: ";
-		Bureaucrat b2(0, "Lorphan");
-		std::cout << b2 << std::endl;
+		Bureaucrat	b1(10, "lorphan");
+		Bureaucrat	b2(140);
+		Form		form1("form1", 10, 20);
+		Form		form2("form2", 140, 20);
+
+		std::cout << form2 << std::endl;
+		b1.signForm(form2);
+		b2.signForm(form1);
+		b1.signForm(form1);
+		std::cout << form1 << std::endl;
+
 	}
 	catch(const std::exception& e)
 	{
@@ -26,41 +33,12 @@ int main()
 
 	try
 	{
-		std::cout << "Test3: ";
-		Bureaucrat b3(150, "Lorphan");
-		b3.incrementGrade();
-		std::cout << b3 << std::endl;
+		Bureaucrat	b3(1);
+		Form		form2("form3", 0, 20);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-
-	try
-	{
-		std::cout << "Test4: ";
-		Bureaucrat b4(1, "Lorphan");
-		b4.decrementGrade();
-		std::cout << b4 << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-	try
-	{
-		std::cout << "Test5: ";
-		Bureaucrat b5(100, "Lorphan");
-		b5.decrementGrade();
-		b5.decrementGrade();
-		b5.decrementGrade();
-		std::cout << b5 << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
 	return 0;
 }

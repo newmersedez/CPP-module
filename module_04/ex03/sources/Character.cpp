@@ -20,7 +20,6 @@ Character::Character(const Character& copy)
 
 Character::~Character()
 {
-	std::cout << "Character destructor" << std::endl;
 	for (unsigned int i = 0; i < this->number_of_materials; i++)
 		delete this->materials[i];
 }

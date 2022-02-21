@@ -18,7 +18,6 @@ MateriaSource::MateriaSource(const MateriaSource& copy)
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << "Materia destructor" << std::endl;
 	for (unsigned int i = 0; i < this->number_of_materials; i++)
 		delete this->materials[i];
 }

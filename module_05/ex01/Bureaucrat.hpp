@@ -9,10 +9,10 @@ private:
 	const std::string	name;
 	unsigned int		grade;
 
-	static const unsigned int	max_grade = 1;
-	static const unsigned int	min_grade = 150;
-
 public:
+	static const unsigned int	min_grade = 1;
+	static const unsigned int	max_grade = 150;
+
 	class GradeTooHighException : public std::exception
 	{
 		virtual const char* what() const throw();

@@ -3,24 +3,24 @@
 ShrubberyCreationForm::ShrubberyCreationForm()
 	: Form("", 145, 137), target("")
 {
-	std::cout << "ShrubberyCreationForm constructor called." << std::endl;
+	// std::cout << "ShrubberyCreationForm constructor called." << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name)
 	: Form(name, 145, 137), target(name)
 {
-	std::cout << "ShrubberyCreationForm constructor called." << std::endl;
+	// std::cout << "ShrubberyCreationForm constructor called." << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy)
 	: Form(copy), target(copy.target)
 {
-	std::cout << "ShrubberyCreationForm copy constructor called." << std::endl;
+	// std::cout << "ShrubberyCreationForm copy constructor called." << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "ShrubberyCreationForm destructor called." << std::endl;
+	// std::cout << "ShrubberyCreationForm destructor called." << std::endl;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy)
@@ -33,5 +33,9 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	(void)executor;
+	if (this->getIsSigned() == false)
+		throw Form::UnsignedException();
+	else if (executor.getGrade() > this->getGradeToExecute())
+		throw Form::GradeTooLowException();
+	std::cout << this->target + " has been pardoned by Zafod Beeblebrox." << std::endl;
 }

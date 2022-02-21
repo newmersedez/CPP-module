@@ -26,6 +26,16 @@ public:
 		virtual const char* what() const throw();
 	};
 
+	class SignedException : public std::exception
+	{
+		virtual const char* what() const throw();
+	};
+
+	class UnsignedException : public std::exception
+	{
+		virtual const char* what() const throw();
+	};
+
 	Form(std::string name, unsigned int gts, unsigned int gte);
 	Form(const Form& copy);
 	virtual ~Form();

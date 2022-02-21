@@ -26,6 +26,10 @@ int main()
 
 		Form*	form4 = intern.makeForm("hmm", "aaaaaa");
 		(void)form4;
+		delete form1;
+		delete form2;
+		delete form3;
+		delete form4;
 	}
 	catch(const std::exception& e)
 	{

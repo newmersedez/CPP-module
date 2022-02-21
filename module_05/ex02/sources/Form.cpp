@@ -1,8 +1,10 @@
-#include "Form.hpp"
+#include "../headers/Form.hpp"
 
 Form::Form()
 	: name("None"), is_signed(false), grade_to_sign(1), grade_to_execute(1)
-{}
+{
+	std::cout << "Form constructor called." << std::endl;
+}
 
 Form::Form(std::string name, unsigned int gts, unsigned int gte)
 	: name(name), is_signed(false), grade_to_sign(gts), grade_to_execute(gte)
@@ -15,15 +17,20 @@ Form::Form(std::string name, unsigned int gts, unsigned int gte)
 	{
 		throw Form::GradeTooHighException();
 	}
+	std::cout << "Form constructor called." << std::endl;
 }
 
 Form::Form(const Form& copy)
 	: name(copy.name), is_signed(copy.is_signed),
 	grade_to_sign(copy.grade_to_sign), grade_to_execute(copy.grade_to_execute)
-{}
+{
+	std::cout << "Form copy constructor called." << std::endl;
+}
 
 Form::~Form()
-{}
+{
+	std::cout << "Form destructor called." << std::endl;
+}
 
 Form& Form::operator=(const Form& copy)
 {
@@ -59,8 +66,6 @@ void Form::beSigned(const Bureaucrat& bureaucrat)
 	{
 		throw Form::GradeTooLowException();
 	}
-	else if (this->is_signed)
-		throw Form::SignedException();
 	else
 		this->is_signed = true;
 }
@@ -75,10 +80,6 @@ const char* Form::GradeTooLowException::what() const throw()
 	return "Grade is too low.";
 }
 
-const char* Form::SignedException::what() const throw()
-{
-	return "Form is already signed.";
-}
 
 std::ostream& operator<<(std::ostream& stream, const Form& form)
 {

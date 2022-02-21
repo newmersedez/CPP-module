@@ -26,20 +26,17 @@ public:
 		virtual const char* what() const throw();
 	};
 
-	class SignedException : public std::exception
-	{
-		virtual const char* what() const throw();
-	};
-
 	Form(std::string name, unsigned int gts, unsigned int gte);
 	Form(const Form& copy);
-	~Form();
+	virtual ~Form();
 
 	const std::string& getName() const;
 	bool getIsSigned() const;
 	unsigned int getGradeToSign() const;
 	unsigned int getGradeToExecute() const;
 	void beSigned(const Bureaucrat& bureaucrat);
+	
+	virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream& operator<<(std::ostream& stream, const Form& form);

@@ -1,5 +1,5 @@
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "../headers/Bureaucrat.hpp"
+#include "../headers/Form.hpp"
 
 int main()
 {
@@ -22,7 +22,6 @@ int main()
 		std::cout << form2 << std::endl;
 		b1.signForm(form2);
 		b2.signForm(form1);
-		b1.signForm(form1);
 		b1.signForm(form1);
 		std::cout << form1 << std::endl;
 

@@ -16,7 +16,7 @@ private:
 	std::map<int, int>	_values;
 
 	Span();
-	void _update(int n);
+	void _update(std::map<int, int>::iterator iter_curr);
 
 public:
 	Span(unsigned int n);
@@ -80,7 +80,7 @@ void Span::addNumber(int n)
 		throw std::length_error("span is full");
 	this->_size++;
 	this->_values[n] += 1;
-	this->_update(n);
+	this->_update(this->_values.find(n));
 }
 
 int Span::shortestSpan() const
@@ -97,36 +97,29 @@ int Span::longestSpan() const
 	return this->_longest_span;
 }
 
-void Span::_update(int n)
+void Span::_update(std::map<int, int>::iterator iter_curr)
 {
-	if (this->_size < 2)
+	if (this->_values.size() < 2)
 		return ;
 
-	std::map<int, int>::iterator	iter_curr = this->_values.find(n);
-	std::map<int, int>::iterator	iter_prev;
-	std::map<int, int>::iterator	iter_next;
-	size_t							temp;
+	std::map<int, int>::iterator	iter_prev = std::prev(iter_curr);
+	std::map<int, int>::iterator	iter_next = std::next(iter_curr);
+	std::map<int, int>::iterator	iter_min;
+	std::map<int, int>::iterator	iter_max;
+	size_t							temp = this->_shortest_span;
 
-	if (iter_curr == this->_values.end())
-		return;
-	if (iter_curr == this->_values.begin())
+	iter_min = this->_values.begin();
+	iter_max = std::prev(this->_values.end());
+	if (iter_curr != this->_values.begin())
 	{
-		iter_next = (iter_curr)++;
-		temp = abs((*iter_next).first - (*iter_curr).first);
+		temp = std::min(temp,
+				static_cast<size_t>(iter_curr->first - iter_prev->first));
 	}
-	else if (iter_curr == --this->_values.end())
+	if (iter_next != this->_values.end())
 	{
-		iter_prev = (iter_curr)++;
-		temp = abs((*iter_curr).first - (*iter_prev).first);
+		temp = std::min(temp,
+				static_cast<size_t>(iter_next->first - iter_curr->first));
 	}
-	else
-	{
-		iter_prev = (iter_curr)--;
-		iter_next = (iter_curr)++;
-		temp = std::max(abs((*iter_curr).first - (*iter_prev).first), abs((*iter_next).first - (*iter_curr).first));
-	}
-	if (temp < this->_shortest_span)
-		this->_shortest_span = temp;
-	if (temp > this->_longest_span)
-		this->_longest_span = temp;
+	this->_longest_span = iter_max->first - iter_min->first;
+	this->_shortest_span = temp;
 }

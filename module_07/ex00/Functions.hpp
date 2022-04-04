@@ -8,7 +8,6 @@ void swap(T& a, T& b)
 	b = temp;
 }
 
-
 template <typename T>
 T& min(T& a, T& b)
 {
